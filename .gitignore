@@ -15,7 +15,7 @@ __pycache__/
 .idea/
 
 # Wygenerowane foldery z wykresami
-wykresy/
+# wykresy/
 
 # Pliki wyjściowe, logi i tymczasowe artefakty
 *.log
