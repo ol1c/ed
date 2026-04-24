@@ -1,0 +1,32 @@
+# Wirtualne środowisko
+.venv/
+venv/
+env/
+ENV/
+
+# Python - pliki cache i binarne kompilacje
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Edytory i środowiska IDE
+.vscode/
+.idea/
+
+# Wygenerowane foldery z wykresami
+wykresy/
+
+# Pliki wyjściowe, logi i tymczasowe artefakty
+*.pdf
+*.log
+*.html
+ex_out.txt
+req_out.txt
+raport_tmp.html
+
+# Zbiory danych (opcjonalnie: pliki .csv pobrane z ML/Kaggle często się ignoruje ze względu na ich potencjalny duży rozmiar)
+dataset/
+
+# Jupyter Notebook (w razie użycia w przyszłości)
+.ipynb_checkpoints/
