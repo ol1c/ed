@@ -18,7 +18,6 @@ __pycache__/
 wykresy/
 
 # Pliki wyjściowe, logi i tymczasowe artefakty
-*.pdf
 *.log
 *.html
 ex_out.txt
