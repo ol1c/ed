@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Prezentacja: Eksploracja Danych - Pokemon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Style dla biblioteki Reveal.js ułatwiające wyświetlanie pokazu slajdów w przeglądarce -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/simple.min.css">
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+        .reveal p, .reveal li { font-size: 26px; text-align: justify; line-height: 1.4; }
+        .reveal ul { margin-block-start: 1em; }
+        .reveal li { margin-bottom: 0.5em; }
+        .reveal .title-slide p { text-align: center; font-size: 24px; margin-top: 50px;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slajd 1 -->
+            <section class="title-slide">
+                <h2>Projekt z przedmiotu<br>Eksploracja Danych</h2>
+                <hr>
+                <h4>Zrozumienie problemu + Zrozumienie danych</h4>
+                <p><b>Dane:</b> Pokemon - Weedle's Cave</p>
+                <p><b>Autorzy:</b> Jakub Nowak, Oliwier Komorowski, Piotr Staszko</p>
+            </section>
+
+            <!-- Slajd 2 -->
+            <section>
+                <h3>Ogólny opis zbioru</h3>
+                <ul>
+                    <li>Zbiór zawiera statystyki Pokemonów oraz historyczne wyniki ich walk.</li>
+                    <li>Punkty danych opisują charakterystykę danego potwora: punkty zdrowia, siła ataku, obrona itd.</li>
+                    <li>Poddane analizie zostały dodatkowe pliki opisujące wygranych i przegranych.</li>
+                    <li>W symulacji uwzględniono ważną mechanikę walki: pierwszy wymieniony w zgłoszeniu Pokemon decyduje o pierwszym uderzeniu.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 3 -->
+            <section>
+                <h3>Cele eksploracji i kryteria sukcesu</h3>
+                <ul>
+                    <li><b>Cel główny:</b> Predykcja wyników przyszłych walk Pokemonów na bazie statystyk. Docelowo jest to problem klasyfikacji binarnej (wygrana pierwszego organizmu: tak/nie).</li>
+                    <li><b>Cel analityczny:</b> Określenie, które z atrybutów bojowych mają największy wpływ na wygraną walkę.</li>
+                    <li><b>Miernik oceny:</b> Trafność (ang. <i>Accuracy</i>) badająca poprawność przypisania odpowiedniej klasy wygranej.</li>
+                    <li><b>Kryterium sukcesu:</b> Osiągnięcie na testowym zbiorze dokładności rzędzu 85% lub więcej.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 4 -->
+            <section>
+                <h3>Struktura zbioru danych</h3>
+                <ul>
+                    <li><b>Pochodzenie:</b> Platforma Kaggle (<i>terminus7/pokemon-challenge</i>), mechanika turowa z gier wideo.</li>
+                    <li>Rozmiar zbioru stanowi podział na 3 pliki:
+                        <ul>
+                            <li><code>pokemon.csv</code> – 800 przykładów bazowych (12 atrybutów własnych potworów)</li>
+                            <li><code>combats.csv</code> – 50 000 historycznych wyników bitew ułatwiających wytrenowanie korelacji (3 atrybuty do parowania)</li>
+                            <li><code>tests.csv</code> – 10 000 par testowych dla domyślnej, nieznanej walidacji wyjściowej (2 atrybuty wprowadzające)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slajd 5 -->
+            <section>
+                <h3>Atrybuty własne (pokemon.csv)</h3>
+                <ul>
+                    <li><b>Identyfikujące:</b> `#` (ID), `Name` (nazwa gatunku).</li>
+                    <li><b>Rodzaje / kategorie:</b> `Type 1`, `Type 2` (podstawowy i złożony żywioł determinujący słabości bazowe m.in. Ogień, Woda), flaga `Legendary` informująca o unikalnej rzadkości gatunku i przeważnie wrodzonych gigantycznych statystykach.</li>
+                    <li><b>Współczynniki bitewne:</b> `HP` (punkty wytrzymałości życia), `Attack` (brutalna siła ciosu w zwarciu), `Defense` (odporność i gęstość pancerza na ataki zwarciowe).</li>
+                    <li><b>Bitewne specjalne:</b> `Sp.Atk` oraz `Sp.Def` (odpowiedniki obrażeń i obrony na żywiołowe obrażenia dystansowe/magiczne).</li>
+                </ul>
+            </section>
+            
+            <!-- Slajd 6 -->
+            <section>
+                <h3>Kluczowy atrybut taktyczny - Speed</h3>
+                <ul>
+                    <li>Atrybut <b>Speed</b> odgrywa kluczowe rozwiązanie w architekturze logiki turniejowej zaprezentowanego środowiska.</li>
+                    <li>Wyznacza on jednoznacznie inicjatywę tur i pierwszeństwo prewencyjnego uderzenia krytycznego.</li>
+                    <li>Oprócz ogólnych danych `combats.csv` posiada jedynie `First_pokemon` i `Second_pokemon`, po czym typuje docelowego zwycięzcę (`Winner`). Zjawisko przewagi na starcie będzie kluczem do predykcji przyszłych wyników.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 7 -->
+            <section>
+                <h3>Eksploracyjna Analiza (EDA) - Rozkłady</h3>
+                <ul>
+                    <li>Potwierdzono, że atrybuty bojowe na bazie próbek <b>nie posiadają rozkładu normalnego</b> - weryfikacja statystyczna Shapiro-Wilkiem wykazała wyniki p < 0.05.</li>
+                    <li>Posiadają one asymetrię - dominują wartości słabsze, natomiast zauważalny jest bardzo odległy ogon ("Elita Bossów").</li>
+                    <li>Rozkład w potyczkach turniejowych wygranej (`Winner`) jest bardzo dobrze obustronnie zbalansowany, co ułatwi trening klasyfikacyjny.</li>
+                    <li>Pod kątem kategoryzacji - w faunie wirtualnego gatunku dominują osobniki Wodne i Normalne.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 8 -->
+            <section>
+                <h3>EDA - Korelacje Spearmana</h3>
+                <ul>
+                    <li>Zaobserwowano silnie zgrupowane współzależności pomiędzy elementami siły potwora: `Attack`, `Defense`, `Sp.Atk`, `Sp.Def` korelują ze sobą. Rosną one wraz z doświadczeniem oraz elitarnością klasy gatunku (często w symbiozie).</li>
+                    <li>Zmiennymi najbardziej rzutującymi na Wygraną Walkę są połączone dyferencjały par (różnice w zestawianych mocach pomiędzy oboma oponentami).</li>
+                    <li><b>Główne Odkrycie:</b> Najważniejszym wektorem odniesienia jest różnica `Diff_Speed` o potężnej korelacji. Na kolejnych stopniach podium ląduje `Diff_Attack` (brutalna moc destrukcji). Model defensywny i ukrywanie się za gęstym `Def` wygrywa walki zauważalnie rzadziej.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 9 -->
+            <section>
+                <h3>Analiza i jakość danych</h3>
+                <ul>
+                    <li><b>Braki Danych:</b> Odnotowano pojedynczy brak nazwy Pokemona w 800 rekordach. Duża ilość pustych wartości w `Type 2` jest zaszłością w pełni naturalną i spójną (nie wszystkie potwory w tym świecie dysponują 2 zrzeszonymi typami magii). Należy zmapować je jako "None".</li>
+                    <li><b>Outliery:</b> Wykazano kilka wartości odbiegających od norm (poza boxplot). Nie są to wartości zakropione błędem - odnoszą się one jedynie do potężnych, rzadkich organizmów i dodatnio i precyzyjnie wpłyną na poprawę wyników po nauczeniu.</li>
+                    <li>Wizualnie podsumowana jakość danych pozwala nam określić badany cel za perfekcyjnie wykonalny.</li>
+                </ul>
+            </section>
+
+            <!-- Slajd 10 -->
+            <section>
+                <h3>Wnioski końcowe</h3>
+                <ul>
+                    <li>Zrozumieliśmy biomechanikę uniwersum: Atakuje pierwszy i mocniej wygrywa chętniej.</li>
+                    <li>Prześwietlenie korelacji pozwala na potencjalną redukcję wymiarowości - możliwe, że do trafnej predykcji wystarczy zawęzić parametry do `Speed` i `Attack`, redukując nadmiarowe pokrewne atrybuty (jak warianty Specjalne lub proste warianty Defensywne).</li>
+                    <li>Dane są ustandaryzowane w stopniu dobrym, gotowe do połączenia tabel, rzutowania wyników starć oraz rozpoczęcia właściwej części projektowania algorytmu estymacyjnego.</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Skrypty Reveal.js dla dodania interaktywności pokazu w HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'fade' // Animacja przejść
+        });
+    </script>
+</body>
+</html>

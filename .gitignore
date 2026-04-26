@@ -19,7 +19,6 @@ __pycache__/
 
 # Pliki wyjściowe, logi i tymczasowe artefakty
 *.log
-*.html
 ex_out.txt
 req_out.txt
 raport_tmp.html
