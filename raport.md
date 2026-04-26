@@ -157,4 +157,4 @@ Dodatkowo większość atrybutów (zwłaszcza różnicowych) ma korelację dodat
 
 Następnie dokonano oceny jakości danych. Głównym mankamentem danych jest nieprecyzyjne wyjaśnienie kolumn w algorytmie wynikowym walk - nie podano wzorów ich dokładnego wyznaczania (silnika turniejowego) oraz ewentualnych wskaźników losowości czy mnożników żywiołów. Dlatego wyjściowo ciężko jest ze stuprocentową pewnością ocenić, czy występowanie każdego punktu w pełni ma sens, czy też nie (bez znania całego kodu turnieju). Jednakże ze względu na silną dodatnią korelację dodatnich wartości ze statusem zwycięzcy, występowanie outlierów w głównych statystykach zawsze świadczy o przytłaczającej wyższości elitarnej potęgi danego osobnika, a zatem jest wysoce przydatne dla modelu. W związku z czym najlepszą decyzją docelową byłoby ścisłe pozostawienie wartości odstających w zbiorze bez ingerencji.
 
-Biorąc pod uwagę stosunkowo dobrą jakość danych, uważam, że cel eksploracji jest możliwy do spełnienia.
+Biorąc pod uwagę stosunkowo dobrą jakość danych, cel eksploracji jest możliwy do spełnienia.
