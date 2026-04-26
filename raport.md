@@ -109,7 +109,7 @@ Na podstawie powyższej tabeli możemy powiedzieć z dużą pewnością, że wsz
 
 2. **Korelacje pomiędzy wartościami atrybutów**
 
-   W celu obliczenia korelacji z wynikiem walki zamieniłem zwycięstwo pierwszego Pokemona (zmienna celu `First_won`) na 1 i przegraną na 0. W związku z faktem, że żaden atrybut nie miał rozkładu normalnego stosuję korelację Spearmana.
+   W celu obliczenia korelacji z wynikiem walki zamieniono zwycięstwo pierwszego Pokemona (zmienna celu `First_won`) na 1 i przegraną na 0. W związku z faktem, że żaden atrybut nie miał rozkładu normalnego stosuję korelację Spearmana.
 
    ![Macierz korelacji Spearmana](wykresy/macierz_korelacji_spearman.png)
    ![Macierz korelacji Spearmana ze współczynnikami](wykresy/macierz_korelacji_spearman_annot.png)
@@ -126,7 +126,7 @@ Na podstawie powyższej tabeli możemy powiedzieć z dużą pewnością, że wsz
    
    **Wnioski:**
    - W przypadku atrybutu oznaczającego wygraną widać, że wszystkie analizowane, różnicowe atrybuty numeryczne wykazują dość równą, dodatnią korelację. W żaden sposób nie wpływają przeciwnie (nie zmniejszają szansy). 
-   - Atrybut różnicy w szybkości (`Diff_Speed`) odstaje jako gigantyczna ekstremalna anomalia w pozytywnym sensie – współczynnik na poziomie wyższym niż 0.7. Klasy o wyższym modyfikatorze szybkości najczęściej dokonują w grze natychmiastowego uderzenia kończącego, z związku z czym `Speed` to najbardziej krytyczny i sensowny atrybut wskazujący "diagnozę sukcesu" turniejowego.
+   - Atrybut różnicy w szybkości (`Diff_Speed`) odstaje jako gigantyczna ekstremalna anomalia w pozytywnym sensie – współczynnik na poziomie wyższym niż 0.7. Klasy o wyższym modyfikatorze szybkości najczęściej dokonują w grze natychmiastowego uderzenia kończącego, w związku z czym `Speed` to najbardziej krytyczny i sensowny atrybut wskazujący "diagnozę sukcesu" turniejowego.
    - Atrybuty wybitnie ofensywne (`Diff_Attack`, `Diff_Sp. Atk`) stanowią kolejną odizolowaną grupę atrybutów, silnie korelującą z finalnym wynikiem na poziomie oscylującym przy 0.5. Wynika to nierozerwalnie ze schematu zadawania odpowiednio krytycznych ciosów już przy pierwszej turze zaraz po `Speed`. Zatem jest to bardzo sensowne, że silnie przełożą się na losy modelu.
    - Elementy związane typowo ze statystykami wytrzymałości oraz zdrowia komórek organizmu Pokemonów – czyli `Diff_HP` (0.34), `Diff_Defense` czy `Diff_Sp. Def` wykazują mniejszą, najniższą korelację z klasą wygranej. Sama słabsza korelacja pozwala zaobserwować, że w budowanym przez nas odniesieniu to agresorzy dyktują reguły walk, a potwory "pod obronę" (obfite w HP czy szczelność powłoki) są po prostu regularnie ignorowane logiką turniejową i ich wybór do walk nie rokuje zwycięstwa w takim stopniu jak ofensywa.
    
