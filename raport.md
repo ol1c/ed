@@ -1,11 +1,8 @@
 # Projekt z przedmiotu Eksploracja Danych
 ## Pierwszy etap: Zrozumienie problemu + Zrozumienie danych
 
-**Temat:** Pokemon Challenge (Kaggle)
-**Imię i nazwisko:** [Twoje Imię i Nazwisko]
-**Numer indeksu:** [Twój numer indeksu]
-**Data:** 24.04.2026
-**Nazwa sprawozdania:** Eksploracyjna Analiza Danych (EDA) – Pokemon Challenge
+**Dane:** Pokemon - Weedle's Cave <br>
+**Autorzy:** Jakub Nowak 197860 , Oliwier Komorowski 197808, Piotr Staszko 197938
 
 ---
 
@@ -48,45 +45,45 @@ Poniżej zamieszczono opis poszczególnych atrybutów zarówno numerycznych, jak
 
 **Plik pokemon.csv**
 
-| Nazwa | Typ | Znaczenie |
-| --- | --- | --- |
-| `#` | Numeryczny | Unikalny identyfikator reprezentujący danego Pokemona. |
-| `Name` | Nominalny | Atrybut przechowujący nazwę rozpoznawczą gatunku Pokemona. |
-| `Type 1` | Nominalny | Podstawowy typ/żywioł Pokemona (np. Grass, Fire). Wpływa on na mnożniki odporności i wrażliwości w walkach z innymi monstrami. W grze występuje 18 unikalnych klas tego atrybutu. |
-| `Type 2` | Nominalny | Dodatkowy typ/żywioł Pokemona krzyżujący odporności u rzadszych osobników. Atrybut ten może być pusty, co oznacza brak hybrydowości organizmu pierwszego typu. |
-| `HP` | Numeryczny | Atrybut informuje o puli punktów zdrowia w organizmie Pokemona. Determinuje on ilość obrażeń (tzw. hit points), które potwór może przyjąć przed utratą przytomności. Wyższe `HP` jest utożsamiane z wytrzymalszymi klasami. |
-| `Attack` | Numeryczny | Parametr kalkulujący ilość bazowych obrażeń fizycznych. Wyższa wartość determinuje generowanie potężniejszych standardowych ataków na statystyki powłoki uszkodzeń przeciwnika. |
-| `Defense` | Numeryczny | Atrybut reprezentujący twardość powłoki obronnej. Odpowiada za bezpośrednią redukcję fizycznych ataków otrzymywanych od rywala. Wyższe parametry to wyższa obrona tkanki potwora. |
-| `Sp. Atk` | Numeryczny | Wartość generująca rzadsze, silniejsze ataki specjalne oraz ataki żywiołów (np. dystansowe ataki ogniem bądź trucizny umysłu), pomijające częściowo standardową fizyczną obronę przeciwnika. |
-| `Sp. Def` | Numeryczny | Statystyka oznaczająca odpowiedź na `Sp. Atk`. Powala zredukować lub uodpornić na wymianę i efekty ataków specjalnych czy ataków w słabość rzuconych przez wrogiego osobnika. |
-| `Speed` | Numeryczny | Istotny atrybut informujący o priorytetach uderzeń. Determinuje, kto atakuje i podejmuje tury pierwszy w ramach symulacji gry. Atrybut z wysokimi współczynnikami stanowi kluczową przewagę bojową. |
-| `Generation` | Numeryczny | Parametr generacji wyznaczający rok występowania i edycję oprogramowania (gry) w jakiej zaimplementowany został Pokemon. Przyjmuje ramy dyskretne: zbiór liczbowy 1-6. |
-| `Legendary` | Nominalny / Logiczny | Flaga atrybutu informująca, czy stwór zalicza się do ekstremalnie rzadko rodzących się legendarnych gatunków. Gatunki 'True' charakteryzują się z reguły odgórnym wybitnym ulepszeniem pozostałych ról numerycznych i stanowią elitarną stawkę (statusu bossa). |
+| Nazwa        | Typ                  | Znaczenie                                                                                                                                                                                                                                                       |
+| ------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `#`          | Numeryczny           | Unikalny identyfikator reprezentujący danego Pokemona.                                                                                                                                                                                                          |
+| `Name`       | Nominalny            | Atrybut przechowujący nazwę rozpoznawczą gatunku Pokemona.                                                                                                                                                                                                      |
+| `Type 1`     | Nominalny            | Podstawowy typ/żywioł Pokemona (np. Grass, Fire). Wpływa on na mnożniki odporności i wrażliwości w walkach z innymi monstrami. W grze występuje 18 unikalnych klas tego atrybutu.                                                                               |
+| `Type 2`     | Nominalny            | Dodatkowy typ/żywioł Pokemona krzyżujący odporności u rzadszych osobników. Atrybut ten może być pusty, co oznacza brak hybrydowości organizmu pierwszego typu.                                                                                                  |
+| `HP`         | Numeryczny           | Atrybut informuje o puli punktów zdrowia w organizmie Pokemona. Determinuje on ilość obrażeń (tzw. hit points), które potwór może przyjąć przed utratą przytomności. Wyższe `HP` jest utożsamiane z wytrzymalszymi klasami.                                     |
+| `Attack`     | Numeryczny           | Parametr kalkulujący ilość bazowych obrażeń fizycznych. Wyższa wartość determinuje generowanie potężniejszych standardowych ataków na statystyki powłoki uszkodzeń przeciwnika.                                                                                 |
+| `Defense`    | Numeryczny           | Atrybut reprezentujący twardość powłoki obronnej. Odpowiada za bezpośrednią redukcję fizycznych ataków otrzymywanych od rywala. Wyższe parametry to wyższa obrona tkanki potwora.                                                                               |
+| `Sp. Atk`    | Numeryczny           | Wartość generująca rzadsze, silniejsze ataki specjalne oraz ataki żywiołów (np. dystansowe ataki ogniem bądź trucizny umysłu), pomijające częściowo standardową fizyczną obronę przeciwnika.                                                                    |
+| `Sp. Def`    | Numeryczny           | Statystyka oznaczająca odpowiedź na `Sp. Atk`. Powala zredukować lub uodpornić na wymianę i efekty ataków specjalnych czy ataków w słabość rzuconych przez wrogiego osobnika.                                                                                   |
+| `Speed`      | Numeryczny           | Istotny atrybut informujący o priorytetach uderzeń. Determinuje, kto atakuje i podejmuje tury pierwszy w ramach symulacji gry. Atrybut z wysokimi współczynnikami stanowi kluczową przewagę bojową.                                                             |
+| `Generation` | Numeryczny           | Parametr generacji wyznaczający rok występowania i edycję oprogramowania (gry) w jakiej zaimplementowany został Pokemon. Przyjmuje ramy dyskretne: zbiór liczbowy 1-6.                                                                                          |
+| `Legendary`  | Nominalny / Logiczny | Flaga atrybutu informująca, czy stwór zalicza się do ekstremalnie rzadko rodzących się legendarnych gatunków. Gatunki 'True' charakteryzują się z reguły odgórnym wybitnym ulepszeniem pozostałych ról numerycznych i stanowią elitarną stawkę (statusu bossa). |
 
 **Pliki combats.csv / tests.csv**
 
-| Nazwa | Typ | Znaczenie |
-| --- | --- | --- |
-| `First_pokemon` | Numeryczny | Identifier pierwszego walczącego Pokemona, pobierający z bazy wariant uderzający zawsze jako pierwszy na wejściu. |
-| `Second_pokemon` | Numeryczny | Identifier drugiego walczącego, defensywnego na wejściu Pokemona. |
-| `Winner` | Numeryczny | Zmienna celu wskazująca po identyfikatorze ostatecznego wygranego starcia pomiędzy podaną w zbiorze parą. (Obecna tylko w pliku combats.csv). |
+| Nazwa            | Typ        | Znaczenie                                                                                                                                     |
+| ---------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `First_pokemon`  | Numeryczny | Identifier pierwszego walczącego Pokemona, pobierający z bazy wariant uderzający zawsze jako pierwszy na wejściu.                             |
+| `Second_pokemon` | Numeryczny | Identifier drugiego walczącego, defensywnego na wejściu Pokemona.                                                                             |
+| `Winner`         | Numeryczny | Zmienna celu wskazująca po identyfikatorze ostatecznego wygranego starcia pomiędzy podaną w zbiorze parą. (Obecna tylko w pliku combats.csv). |
 
 ### Wyniki eksploracyjnej analizy danych (EDA)
 
 1. **Rozkłady wartości atrybutów**
 
-| Atrybut | Histogram |
-| --- | --- |
-| HP | ![Rozkład HP](wykresy/hist_HP.png) |
-| Attack | ![Rozkład Attack](wykresy/hist_Attack.png) |
-| Defense | ![Rozkład Defense](wykresy/hist_Defense.png) |
-| Sp. Atk | ![Rozkład Sp. Atk](wykresy/hist_Sp_Atk.png) |
-| Sp. Def | ![Rozkład Sp. Def](wykresy/hist_Sp_Def.png) |
-| Speed | ![Rozkład Speed](wykresy/hist_Speed.png) |
+| Atrybut    | Histogram                                          |
+| ---------- | -------------------------------------------------- |
+| HP         | ![Rozkład HP](wykresy/hist_HP.png)                 |
+| Attack     | ![Rozkład Attack](wykresy/hist_Attack.png)         |
+| Defense    | ![Rozkład Defense](wykresy/hist_Defense.png)       |
+| Sp. Atk    | ![Rozkład Sp. Atk](wykresy/hist_Sp_Atk.png)        |
+| Sp. Def    | ![Rozkład Sp. Def](wykresy/hist_Sp_Def.png)        |
+| Speed      | ![Rozkład Speed](wykresy/hist_Speed.png)           |
 | Generation | ![Rozkład Generation](wykresy/hist_Generation.png) |
-| Type 1 | ![Rozkład Type 1](wykresy/hist_Type_1.png) |
-| Type 2 | ![Rozkład Type 2](wykresy/hist_Type_2.png) |
-| Legendary | ![Rozkład Legendary](wykresy/hist_Legendary.png) |
+| Type 1     | ![Rozkład Type 1](wykresy/hist_Type_1.png)         |
+| Type 2     | ![Rozkład Type 2](wykresy/hist_Type_2.png)         |
+| Legendary  | ![Rozkład Legendary](wykresy/hist_Legendary.png)   |
    
    **Wnioski:**
    - W przypadku zmiennej celu (zwycięstwo pierwszego lub drugiego Pokemona wynikające ze zbioru walk), klasy są bardzo dobrze zbalansowane ze względu na specyfikę konstrukcji turnieju. Równy rozkład ułatwi proces dalszych analiz i trenowania modelu klasyfikacji.
@@ -97,15 +94,15 @@ Poniżej zamieszczono opis poszczególnych atrybutów zarówno numerycznych, jak
    **Sprawdzenie testem statystycznym - dodatkowo**
    Określenie, czy rozkład atrybutu jest normalny czy nie po prostu na niego patrząc najczęściej spełnia swoje zadanie. Jednakże w razie wątpliwości i w celu bardziej rzetelnego określenia normalności rozkładu można zastosować test statystyczny Shapiro-Wilka. Hipotezą zerowa tego testu brzmi: dana próba pochodzi z populacji o rozkładzie normalnym. Po obliczeniu wartości p należy ją porównać z przyjmowanym progiem (najczęściej 0,05). Jeżeli wartość p jest większa od 0,05 oznacza to, że dane pasują do hipotezy zerowej - możemy uznać rozkład danego atrybutu za normalny. Natomiast, jeżeli wartość p jest mniejsza od 0,05 to należy odrzucić hipotezę zerową - uznajemy, że rozkład atrybutu nie jest normalny. Wartość p można rozumieć jako prawdopodobieństwo uzyskania takiego wyniku, przy założeniu, że hipoteza zerowa jest prawdziwa. Na przykład: jeśli p jest małe (np. mniejsze niż 0,05), to istnieje małe prawdopodobieństwo, że takie dane zostałyby zaobserwowane, jeśli rozkład byłby normalny – co może sugerować, że rozkład nie jest normalny.
 
-| Atrybut | Wartość p dla testu Shapiro-Wilka |
-| --- | --- |
-| HP | 1,15e-20 |
-| Attack | 2,47e-09 |
-| Defense | 9,92e-18 |
-| Sp. Atk | 4,67e-14 |
-| Sp. Def | 8,25e-14 |
-| Speed | 1,31e-07 |
-| Generation | 8,71e-22 |
+| Atrybut    | Wartość p dla testu Shapiro-Wilka |
+| ---------- | --------------------------------- |
+| HP         | 1,15e-20                          |
+| Attack     | 2,47e-09                          |
+| Defense    | 9,92e-18                          |
+| Sp. Atk    | 4,67e-14                          |
+| Sp. Def    | 8,25e-14                          |
+| Speed      | 1,31e-07                          |
+| Generation | 8,71e-22                          |
 
 **Wnioski**
 Na podstawie powyższej tabeli możemy powiedzieć z dużą pewnością, że wszystkie atrybuty numeryczne nie mają rozkładu normalnego (wartość p jest znacznie mniejsza od progu 0,05). Dodatkowo widać, że atrybuty `Speed` oraz `Attack` mają jedne z najwyższych wartości p, lecz wciąż zdecydowanie mniejsze od 0,05.
@@ -142,14 +139,14 @@ Na podstawie powyższej tabeli możemy powiedzieć z dużą pewnością, że wsz
 * **Dane niezrozumiałe:** W ogólności dane są zrozumiałe na dość intuicyjnym poziomie. Dla niektórych czytelników rodzą się pytania o ramy przeliczania logiki obciążeń w grze - na przykład brak dokładnych wzorów "custom algorytmu turniejowego" odpowiadającego z udostępnione wyniki w pliku *combats*. Nie wiemy chociażby, z jakim algorytmicznym współczynnikiem wzmacniającym kalkulowane są uderzenia w słabość przeciwnika uwzględniając skrzyżowanie `Type 1` i `Type 2`. Jednakże na potrzeby tego projektu takie intuicyjne zrozumienie podstaw atrybutów wydaje się być wystarczające i model powinien dać radę samodzielnie dojść do interesujących i dobrych wniosków predykcyjnych.
 * **Punkty oddalone:** Analizując punkty oddalone można dojść do wniosku, że dane są bardzo dobrej jakości. Średnia liczba punktów oddalonych względem atrybutów numerycznych wynosi ok. 10 (metodą rozstępu ćwiartkowego IQR), co stanowi zaledwie ok. 1,2% wszystkich dostępnych 800 danych wejściowych w zbiorze Pokemon. Atrybutami o największej liczbie punktów oddalonych są atrybuty `HP` (19 punktów oddalonych: ok. 2,4% danych zbioru jednostek), `Defense` (13 punktów oddalonych: ok. 1,6%) oraz `Sp. Atk` (10 punktów: ok. 1,2%). Odbiegające wartości stanowią charakterystykę wyjątkowych bosów (Legendary), w związku z czym absolutnie nie stanowią błędu, a jedynie wzmacniają siłę przewidywań przyszłego klasyfikatora.
 
-| Atrybut | Wykres pudełkowy | Wartości |
-| --- | --- | --- |
-| HP | ![](wykresy/boxplot_HP.png) | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[10.00; 125.00]<br><br>Liczba punktów<br>oddalonych: 19 |
-| Attack | ![](wykresy/boxplot_Attack.png) | Mediana: 75.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 165.00]<br><br>Liczba punktów<br>oddalonych: 7 |
-| Defense | ![](wykresy/boxplot_Defense.png) | Mediana: 70.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 13 |
-| Sp. Atk | ![](wykresy/boxplot_Sp_Atk.png) | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[10.00; 160.00]<br><br>Liczba punktów<br>oddalonych: 10 |
-| Sp. Def | ![](wykresy/boxplot_Sp_Def.png) | Mediana: 70.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[20.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 7 |
-| Speed | ![](wykresy/boxplot_Speed.png) | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 2 |
+| Atrybut | Wykres pudełkowy                 | Wartości                                                                                                                             |
+| ------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| HP      | ![](wykresy/boxplot_HP.png)      | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[10.00; 125.00]<br><br>Liczba punktów<br>oddalonych: 19 |
+| Attack  | ![](wykresy/boxplot_Attack.png)  | Mediana: 75.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 165.00]<br><br>Liczba punktów<br>oddalonych: 7   |
+| Defense | ![](wykresy/boxplot_Defense.png) | Mediana: 70.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 13  |
+| Sp. Atk | ![](wykresy/boxplot_Sp_Atk.png)  | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[10.00; 160.00]<br><br>Liczba punktów<br>oddalonych: 10 |
+| Sp. Def | ![](wykresy/boxplot_Sp_Def.png)  | Mediana: 70.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[20.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 7  |
+| Speed   | ![](wykresy/boxplot_Speed.png)   | Mediana: 65.00<br><br>Przedział wartości<br>występujących<br>najczęściej:<br>[5.00; 150.00]<br><br>Liczba punktów<br>oddalonych: 2   |
 
 ### Podsumowanie
 Na początku przeprowadzono analizę rozkładów, z której wynika, że atrybuty numeryczne nie mają rozkładów normalnych, a klasy rozkładu w turniejach cechują się zmiennością. W związku z tym, że rozkłady nie były normalne zastosowano metodę Spearmana do analizy korelacji. Z analizy korelacji wynika, że występują grupy atrybutów silnie ze sobą skorelowane – pierwsza grupa: `Attack`, `Defense`, `Sp. Atk`, `Sp. Def`, druga grupa obejmuje powiązanie `HP` z bazowymi statystykami. Ze względu na dużą korelację danych atrybutów, przekazują one podobną informację (definiując ogólną potęgę Pokemona związaną m.in. z ewolucją czy przynależnością do klasy `Legendary`), co może być redundantne dla modelu.
